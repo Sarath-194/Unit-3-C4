@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    <style>
+
+        body{
+            background-color: whitesmoke;
+        }
+        #container {
+            width: 80%;
+            margin: auto;
+            border: 1px solid red;
+            background-color: white;
+        }
+        #container > #img {
+            height: 70%;
+        }
+        #container > div {
+            padding: 10px;
+        }
+        #img > img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>News page</h1>
+    <div id="container"></div>
+    
+</body>
+</html>
+<script>
+
+    let main = document.getElementById('container');
+
+    let News = JSON.parse(localStorage.getItem('News'))
+    console.log(News)
+
+            let texts = document.createElement('div')
+
+            let img = document.createElement('img')
+            img.src = News.img
+
+            let imgDiv = document.createElement('div')
+            imgDiv.append(img)
+            imgDiv.setAttribute('id', 'img')
+
+            let title = document.createElement('h4')
+            title.textContent = News.item;
+            
+            let author = document.createElement('h4')
+            author.textContent = `Author :${News.author}`;
+
+            let titleDiv = document.createElement('div')
+            titleDiv.append(author,title)
+
+            let time = document.createElement('p')
+            time.textContent = `Time : ${News.time}`;
+
+
+            let disc = document.createElement('p')
+            disc.textContent = News.disc
+
+            let discDiv = document.createElement('div')
+            discDiv.append(time, disc)
+
+            texts.append(titleDiv, discDiv)
+            main.append(imgDiv, texts)
+
+
+
+</script>
